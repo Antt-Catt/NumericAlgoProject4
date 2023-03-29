@@ -33,18 +33,20 @@ print("")
 def f_mat_1(X):
     return ((X[0]+X[1])/2,(X[0]-X[1])/2)
 
+def J(Xn):
+    Jacobian=np.zeros((2,2))
+    Jacobian[0][1]=0.5
+    Jacobian[0][0]=0.5
+    Jacobian[1][0]=0.5
+    Jacobian[1][1]=-0.5
+    return Jacobian
 
-Jacobian=np.zeros((2,2))
-Jacobian[0][1]=1
-Jacobian[0][0]=1
-Jacobian[1][0]=1
-Jacobian[1][1]=-1
 
-print("Solving f(u,v)-> ((u+v)/2,(u-v)/2)=(0,0),where jacobian matrix  of f is ")
-print(Jacobian,)
+
+print("Solving f(u,v)-> ((u+v)/2,(u-v)/2)=(0,0)")
 print("starting point : [1,1]")
 start_mat=np.ones(2)
-print(Newton_Raphson(f_mat_1,Jacobian,start_mat,100,eps))
+print(Newton_Raphson(f_mat_1,J,start_mat,100,eps))
 
 
 #print("Solution :"+str(Newton_Raphson()))

@@ -10,7 +10,7 @@ def Newton_Raphson(f,J,U0,N,epsilon):
         return Xn
 
     for i in range(N):
-        h=np.linalg.lstsq(J,f(Xn))
+        h=np.linalg.lstsq(J(Xn),f(Xn))
         Xn=np.subtract(Xn,h[0])
         if np.linalg.norm(Xn)<epsilon:
             return Xn
