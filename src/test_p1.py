@@ -7,6 +7,7 @@ print("TEST...")
 print("")
 
 print("Testing scalar...")
+print("")
 time.sleep(0.25)
 def function(x):
     return x*x-4
@@ -20,6 +21,8 @@ def function2(x):
 def deri2(x):
     return 3*x**2-2*x
 
+function()
+
 start,eps,N=-1.0,0.01,100
 eps2=0.01
 print("Solution de la fonction f:x-> x**2 - 4 avec U0="+str(start)+" epsilon = "+str(eps)+" : "+str(Newton_Raphson(function,deri,start,N,eps)))
@@ -28,12 +31,27 @@ print("Solution de la fonction f:x-> x**3-x**2 avec U0="+str(start)+" epsilon = 
 time.sleep(0.25)
 print("")
 
+def function_2(x,alpha):
+    return x**alpha
+def deri3(x,alpha):
+    return alpha*(x**(alpha-1))
+
+alph=100
+
+#for i in range(10,1000):
+#    assert()
+print("fonction dont on ne trouve pas la solution avec Newton classique : f(x)-> 1-x**"+str(alph))
+print("la solution selon Newton Raphson est : ")
+print(Newton_Raphson(function,deri,start,N,eps))
+print(" alors que la solution théorique est 1...")
+
 print("Testing matrixes...")
 print("")
+
 def f_mat_1(X):
     return ((X[0]+X[1])/2,(X[0]-X[1])/2)
 
-def J(Xn):
+def J_1(Xn):
     Jacobian=np.zeros((2,2))
     Jacobian[0][1]=0.5
     Jacobian[0][0]=0.5
@@ -41,12 +59,33 @@ def J(Xn):
     Jacobian[1][1]=-0.5
     return Jacobian
 
-
+time.sleep(0.25)
 
 print("Solving f(u,v)-> ((u+v)/2,(u-v)/2)=(0,0)")
 print("starting point : [1,1]")
 start_mat=np.ones(2)
-print(Newton_Raphson(f_mat_1,J,start_mat,100,eps))
+print("Vecteur solution : ")
+print(Newton_Raphson(f_mat_1,J_1,start_mat,100,eps))
+print("")
+time.sleep(0.25)
+
+def f_mat_2(X):
+    return (((X[0]+X[1])**2)/2-5,((X[0]-X[1])**2)/2)
+
+def J_2(Xn):
+    Jacobian=np.zeros((2,2))
+    Jacobian[0][0]=Xn[0]*(Xn[0]+Xn[1])
+    Jacobian[0][1]=Xn[1]*(Xn[0]+Xn[1])
+    Jacobian[1][1]=Xn[0]*(Xn[0]-Xn[1])
+    Jacobian[1][0]=-Xn[1]*(Xn[0]-Xn[1])
+    return Jacobian
+
+print("Solving f(u,v)-> ((u+v)**2/2-5,(u-v)**2/2)=(0,0)")
+print("starting point : [1,1]")
+start_mat=np.ones(2)
+print("Vecteur solution : ")
+print(Newton_Raphson(f_mat_2,J_2,start_mat,100,eps))
+
 
 
 #print("Solution :"+str(Newton_Raphson()))

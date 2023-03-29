@@ -25,8 +25,15 @@ def Newton_Raphson_backtrack(f,J,U0,N,epsilon,eps2):
 
     Xn=U0
     if (type(U0)==float)or (type(U0)==int):
+        alpha=0.5
         for i in range(N):
-            Xn=Xn-f(Xn)/J(Xn)
+            h=f(Xn)/J(Xn)
+            while abs(f(Xn-alpha*h))-abs(f(Xn))>0:
+                alpha=alpha*0.5
+                if alpha<eps2:
+                    return False
+                    
+            Xn=Xn-h
             if abs(Xn)<epsilon:
                 return Xn
         return Xn
