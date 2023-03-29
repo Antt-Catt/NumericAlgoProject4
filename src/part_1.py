@@ -29,7 +29,6 @@ def Newton_Raphson_backtrack(f,J,U0,N,epsilon,eps2):
         for i in range(N):
             h=f(Xn)/J(Xn)
             while abs(f(Xn-alpha*h))-abs(f(Xn))>0:
-                print("on rentre dans la boucle")
                 alpha=alpha*0.5
                 if alpha<eps2:
                     return False
