@@ -1,5 +1,4 @@
 import numpy as np
-'''QUESTION 2'''
 
 def Newton_Raphson(f,J,U0,N,epsilon):
     Xn=U0
