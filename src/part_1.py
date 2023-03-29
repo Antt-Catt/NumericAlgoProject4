@@ -1,4 +1,6 @@
 import numpy as np
+
+
 def Newton_Raphson(f,J,U0,N,epsilon):
     Xn=U0
     for i in range(N):
