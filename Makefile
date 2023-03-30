@@ -1,3 +1,3 @@
 all : 
-	pdflatex tex/rendu.tex
+	pdflatex tex/rapport.tex
 	rm *.aux *.log
