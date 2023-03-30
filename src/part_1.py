@@ -10,7 +10,7 @@ def Newton_Raphson(f,J,U0,N,epsilon):
         return Xn
 
     for i in range(N):
-        h=np.linalg.lstsq(J(Xn),f(Xn))
+        h=np.linalg.lstsq(J(Xn),f(Xn),rcond=-1)
         Xn=np.subtract(Xn,h[0])
         if np.linalg.norm(Xn)<epsilon:
             return Xn
@@ -21,32 +21,40 @@ def Newton_Raphson(f,J,U0,N,epsilon):
 '''QUESTION 4'''
 
 
-def Newton_Raphson_backtrack(f,J,U0,N,epsilon,eps2):
+def Newton_Raphson_backtrack(f,J,U0,N,epsilon):
 
     Xn=U0
     if (type(U0)==float)or (type(U0)==int):
-        alpha=0.5
         for i in range(N):
             h=f(Xn)/J(Xn)
-            while abs(f(Xn-alpha*h))-abs(f(Xn))>0:
-                alpha=alpha*0.5
-                if alpha<eps2:
-                    return False
-                    
-            Xn=Xn-h
-            if abs(Xn)<epsilon:
+            Xn_1=Xn-h
+            if f(Xn_1)-f(Xn)>0:
+                Xn_1=Xn-0.5*h
+            else:
+                Xn_1=Xn-2*h
+
+
+            if abs(Xn_1)<epsilon:
                 return Xn
+            Xn=Xn_1
         return Xn
 
+
+
     for i in range(N):
-        h=np.linalg.lstsq(J(Xn),f(Xn))
-        while np.linalg.norm(f(Xn-alpha*h))-np.linalg.norm(f(Xn))>0:
-            alpha=alpha*0.5
-            if alpha<eps2:
-                return False
-        Xn=np.subtract(Xn,h[0])
+        h=np.linalg.lstsq(J(Xn),f(Xn),rcond=-1)
+        Xn_1=np.subtract(Xn,h[0])
+        if np.linalg.norm(np.subtract(f(Xn_1),f(Xn)))>0:
+            h[0][1]=2*h[0][1]
+            h[0][0]=2*h[0][0]
+            Xn_1=np.subtract(Xn,h[0])
+        else:
+            h[0][1]=0.5*h[0][1]
+            h[0][0]=0.5*h[0][0]
+            Xn_1=np.substract(Xn,h[0])
         if np.linalg.norm(Xn)<epsilon:
             return Xn
+        Xn=Xn_1
     return Xn
 
 def poly(x):
