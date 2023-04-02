@@ -86,9 +86,6 @@ if __name__ == "__main__":
     for i, point in enumerate(Xs_unique):
         plt.text(point[0] + 0.1, point[1], f"P{i+1}", fontsize=12, ha="center", va="center")
     
-    # circle = Circle ((0, 0), radius=1, fill=False)
-    # plt.gca().add_patch(circle)
-
     plt.axis('equal')
     plt.xlabel("x")
     plt.ylabel("y")
