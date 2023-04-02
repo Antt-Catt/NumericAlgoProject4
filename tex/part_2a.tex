@@ -1,0 +1,18 @@
+Nous nous plaçons dans une situation où deux forces gravitationnelles de coefficients 1 (resp. 0.01) centrées en $[0, 0]$ (resp. $[1, 0]$)
+
+Une troisième force, centrifuge, de coefficient 1 et centrée sur le barycentre des deux précédentes. Ce point $(x, y)$ peut être trouvé en résolvant le système suivant :
+
+$$
+\begin{cases}
+  a(A_x - x) + b(B_x - x) = 0 \\
+  a(A_y - y) + b(B_y - y) = 0
+\end{cases}
+$$
+
+avec $a$ et $(A_x, A_y)$ (resp. $b$ et $(B_x, B_y)$) respectivement le coefficient et le point d'application de la première (resp. deuxième) force gravitationnelle décrite précédemment.
+
+Après résolution, on obtient $x = \frac{0,01}{1,01}$ et $y = 0$ comme coordonnées du point d'application de la force centrifuge.
+
+\bigskip
+
+Afin de calculer les points d'équilibres de ce système, nous allons utiliser plusieurs fois l'algorithme implémenté dans la partie \ref{sec:newton}. Après plusieurs itérations de l'algorithme en utilisant des points initiaux différents, on obtient cinq points d'équilibres : \emph{P1} = [0,5  0,870], \emph{P2} = [0,5  -0,870], \emph{P3} = [-0,998  0], \emph{P4} = [0,859  0], \emph{P5} = [1,158  0].
