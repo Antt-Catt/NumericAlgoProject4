@@ -46,14 +46,14 @@ def Newton_Raphson_backtrack(f,J,U0,N,epsilon):
 
         h=np.linalg.lstsq(J(Xn),f(Xn),rcond=-1)
         Xn_1=np.subtract(Xn,h[0])
-        if np.linalg.norm(np.subtract(f(Xn_1),f(Xn)))>0:
+        if np.linalg.norm(np.subtract(f(Xn_1),f(Xn)))<0:
             h[0][1]=2*h[0][1]
             h[0][0]=2*h[0][0]
             Xn_1=np.subtract(Xn,h[0])
         else:
             h[0][1]=0.5*h[0][1]
             h[0][0]=0.5*h[0][0]
-            Xn_1=np.substract(Xn,h[0])
+            Xn_1=np.subtract(Xn,h[0])
         if np.linalg.norm(Xn)<epsilon:
             return Xn
         Xn=Xn_1

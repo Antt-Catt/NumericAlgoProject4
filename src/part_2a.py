@@ -63,9 +63,9 @@ if __name__ == "__main__":
     print(J_expct, "attendue\n-------------")
 
     Xs = []
-    for i in np.arange(-10, 10, 1):
-        for j in np.arange(-10, 10, 1):
-            sol = prt1.Newton_Raphson(f, J, np.array([i, j]), 100, 0.01)
+    for i in np.arange(-10, 10, 0.5):
+        for j in np.arange(-10, 10, 0.5):
+            sol = prt1.Newton_Raphson(f, J, np.array([i, j]), 100, 0.001)
             if np.linalg.norm(sol) > 0.01:
                 Xs.append(sol)
 
