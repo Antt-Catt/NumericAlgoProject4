@@ -42,6 +42,8 @@ def Newton_Raphson_backtrack(f,J,U0,N,epsilon):
 
 
     for i in range(N):
+
+
         h=np.linalg.lstsq(J(Xn),f(Xn),rcond=-1)
         Xn_1=np.subtract(Xn,h[0])
         if np.linalg.norm(np.subtract(f(Xn_1),f(Xn)))>0:
