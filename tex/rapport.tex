@@ -8,6 +8,7 @@
 \usepackage{subcaption}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{amssymb}
 
 %%%%%%%%%%%%%%%% Lengths %%%%%%%%%%%%%%%%
 \setlength{\textwidth}{15.5cm}
@@ -66,5 +67,15 @@
 \label{ssec:electrostat}
 \input{part_2c.tex}
 
+\section{Conlusion et analyse}
+\label{sec:conclu}
+
+Nous avons implémenté l'algorithme de Newton-Raphson et l'avons appliqué à deux problèmes concrets : le calcul des points de Lagrane et l'équilibre électrostatique d'un système de charges.
+
+Dans le premier cas, nous avons utilisé l'algorithme pour trouver les points d'équilibre de deux force gravitationnelles et d'une force centrifuge, obtenant cinq points de Lagrange. Ces points correspondent aux positions d'équilibre pour un objet de petite masse soumis à l'influence gravitationnelle de deux corps massifs. Dans le deuxième cas, nous avons utilisé l'algorithme pour trouver l'équilibre électrostatique d'un système de charges, en minimisant l'énergie potentielle électrostatique. L'algorithme de Newton-Raphson s'est avéré efficace pour résoudre ces deux problèmes.
+
+Les résultats ont été comparés aux résultats théoriques, et nous avons constaté que les résultats obtenus étaient en accord avec les résultats attendus. Ces points ne sont cependant pas les coordonnées exactes, mais plutôt des approximations très fiables obtenues avec une certaine précision.
+
+Nous avons donc constaté que l'algorithme de Newton-Raphson est un outil utile et fiable pour résoudre des problèmes non linéaires.
 
 \end{document}

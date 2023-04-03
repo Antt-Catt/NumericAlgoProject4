@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Circle 
 import part_1 as prt1
 
 def f_elast(X0, k):
@@ -40,18 +39,17 @@ def f_gravi(X0, k):
     return force, jacob
 
 
-def f(X):
-    return gravi_1[0](X) + gravi_2[0](X) + centri[0](X)
-
-def J(X):
-    return gravi_1[1](X) + gravi_2[1](X) + centri[1](X)
-
-
 if __name__ == "__main__":
     gravi_1 = f_gravi(np.array([0, 0]), 1)
     gravi_2 = f_gravi(np.array([1, 0]), 0.01)
     centri = f_centri(np.array([(0.01/1.01), 0]), 1) # 0.01/1.01 selon x est le barycentre des deux masses
 
+    def f(X):
+        return gravi_1[0](X) + gravi_2[0](X) + centri[0](X)
+
+    def J(X):
+        return gravi_1[1](X) + gravi_2[1](X) + centri[1](X)
+    
     print("Force totale au point [1.5, 0] :")
     print(f(np.array([1.5, 0])))
     f_expct = np.array([1.00565457, 0]) # valeur donnée sur la page du cours
