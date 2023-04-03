@@ -1,0 +1,34 @@
+Dans cette partie nous allons apliquer la méthode de résolution de Newton-Raphson afin de trouver l'équilibre électrostatique d'un système constitué de $N$ charges libres se situant aux positions $x_{1},x_{2},...,x_{N}$ dans l'intervale $[-1,1]$. Notre objectif est donc de déterminer un extremum de la fonction de l'énergie totale du système $E$ qui s'exprime par:
+\begin{equation}
+  E(x_{1},x_{2},...,x{N}) =  \summation{N}{i=1}(log|x_{i}+1| + log|x_{i} -1 + \frac{1}{2}\summation{N}{j=1,j \neq i} log|x_{i} - x{j}| 
+\end{equation}
+Cela ce traduit par la résolution de l'équation non-linéaire :
+\begin{equation}
+  \nabla E(x_{1},x_{2},...,x_{N}) = 0
+\end{equation}
+
+\subsection{Calcul de la matrice Jacobienne de $\nabla E$}
+Après simplification de l'expression du gradient de la fonction d'énergie totale on obtient : 
+\begin{equation}
+  \label{eq:gradient}
+  \begin{split}
+    \nabla E(x_{1},x_{2},...,x_{N})  & = \left( \frac{\partial E }{\partial x_{i}}\right)_{1 \leq i \leq N} \\
+    & = \left(\frac{1}{x_{i}+1} + \frac{1}{x_{i} -1} + \frac{1}{2} \summation{N}{j=1,j\neq i}\frac{1}{x_{i}-x{j}}\right)_{1 \leq i \leq N }
+  \end{split}
+\end{equation}
+On note $J$ la matrice Jacobienne de $\nabla E$
+on a d'après \ref{eq:gradient} :
+\begin{equation}
+  \label{eq:jacobian}
+  \begin{split}
+    J & = \left(\frac{\partial \nabla E }{\partial x_{i} \partial x_{j}}\right)_{1 \leq i \leq N , 1 \leq j \leq N} \\
+    & = \left\{
+    \begin{array}{ll}
+      -\frac{1}{(x_{i}+1)^{2}} - \frac{1}{(x_{i} -1)^{2}} - \frac{1}{2} \summation{N}{j=1,j\neq i}\frac{1}{(x_{i}-x{j})^{2}}& \mbox{si i = j} \\
+      -\frac{1}{2(x_{i} - x{j})^{2}} & \mbox{sinon} 
+    \end{array}
+    \right.
+  \end{split}  
+\end{equation}
+
+

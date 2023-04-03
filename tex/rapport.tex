@@ -2,6 +2,7 @@
 
 \usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[]{amsmath}
 \usepackage{graphicx}
 \usepackage{subcaption}
@@ -20,6 +21,7 @@
 \def\responsible{mrekik018}
 \def\secretary{jeamartinez}
 \def\others{scomiti, aguerouani, acattarin}
+\newcommand{\summation}[2]{\sum\limits^{#1}_{#2}}
 
 \begin{document}
 
@@ -47,12 +49,20 @@
 \end{minipage}
 
 %%%%%%%%%%%%%%%% Main part %%%%%%%%%%%%%%%%
-\section{Newton-Raphson solver}
+
+\section{Résolveur Newton-Raphson}
+\label{sec:newton}
 \input{part_1.tex}
+
 \section{Applications}
-\subsection{Computation of the Lagrangian points}
+\label{sec:appli}
+
+\subsection{Calcul des points de Lagrange}
+\label{ssec:lagrange}
 \input{part_2a.tex}
-\subsection{Electrostatic equilibrium}
+
+\subsection{Equilibre électrostatique}
+\label{ssec:electrostat}
 \input{part_2c.tex}
 
 
